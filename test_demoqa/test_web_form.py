@@ -12,13 +12,16 @@ FILE = '6666.jpg'
 ADDRESS = 'New-York,15street,234apt'
 STATE = 'Uttar Pradesh'
 CITY = 'Agra'
+car = os.getcwd() + '\\resources\\6666.jpg'
 
 
 def test_web_form(browser_setings):
-    car = os.getcwd() + '\\resources\\6666.jpg'
+    #open practice form
     browser.open(browser.config.base_url + "/automation-practice-form")
+    # remove advertising bannerы
     browser.element('#fixedban').execute_script('element.remove()')
     browser.element('#RightSide_Advertisement').execute_script('element.remove()')
+    #user input
     browser.element('#firstName').should(be.blank).type(FIRSTNAME)
     browser.element('#lastName').should(be.blank).type(LASTNAME)
     browser.element('#userEmail').should(be.blank).type(EMAIL)
@@ -32,17 +35,18 @@ def test_web_form(browser_setings):
     browser.element('div[class="react-datepicker__day react-datepicker__day--001"]').click()
     browser.element('#subjectsInput').type('E').press_enter()
     browser.element('[for="hobbies-checkbox-1"]').click()
+    #load picture
     browser.element('#uploadPicture').send_keys(car)
+    #address data entry
     browser.element('#currentAddress').should(be.blank).type(ADDRESS)
     browser.element('#state').click()
-
     browser.element('#react-select-3-option-1').should(have.text(STATE)).click()
     browser.element('#city').click()
     browser.element('#react-select-4-option-0').should(have.text(CITY)).click()
-
+    #submit form
     browser.element('#submit').click()
     browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-
+    #validation of entered data
     browser.element('tr:nth-child(1) td:nth-child(2)').should(have.text(f'{FIRSTNAME} {LASTNAME}'))
     browser.element('tr:nth-child(2) td:nth-child(2)').should(have.text(EMAIL))
     browser.element('tr:nth-child(3) td:nth-child(2)').should(have.text('Other'))
@@ -53,11 +57,9 @@ def test_web_form(browser_setings):
     browser.element('tr:nth-child(8) td:nth-child(2)').should(have.text(FILE))
     browser.element('tr:nth-child(9) td:nth-child(2)').should(have.text(ADDRESS))
     browser.element('tr:nth-child(10) td:nth-child(2)').should(have.text(f'{STATE} {CITY}'))
+    #close form
     browser.element('#closeLargeModal').click()
 
 
-"""
-    browser.execute_script("window.scrollTo(0, document.body.scrollHeight-1000)")
 
 
-"""
