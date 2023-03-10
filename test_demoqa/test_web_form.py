@@ -35,7 +35,7 @@ def test_web_form(browser_setings):
     browser.element('.react-datepicker__year-select').click()
     browser.element('option[value="1988"]').click()
     browser.element('div[class="react-datepicker__day react-datepicker__day--001"]').click()
-    browser.element('#subjectsInput').type('E').press_enter()
+    browser.element('#subjectsInput').type('English').press_enter()
     browser.element('[for="hobbies-checkbox-1"]').click()
 # load picture
     browser.element('#uploadPicture').send_keys(car)
