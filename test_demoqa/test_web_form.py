@@ -3,6 +3,7 @@ from selenium import webdriver
 from selene.support.shared import browser
 from selene import be, have
 import os
+import allure
 
 # data to verify
 
