@@ -13,8 +13,8 @@ EMAIL = 'bedtester001@gmail.com'
 MOBILE = '9119119119'
 FILE = '6666.jpg'
 ADDRESS = 'New-York,15street,234apt'
-STATE = 'Uttar Pradesh'
-CITY = 'Agra'
+STATE = 'Haryana'
+CITY = 'Karnal'
 car = os.getcwd() + '\\resources\\6666.jpg'
 
 
@@ -52,9 +52,9 @@ def test_web_form(browser_setings):
     # validation of entered data
     browser.element('tr:nth-child(1) td:nth-child(2)').should(have.text(f'{FIRSTNAME} {LASTNAME}'))
     browser.element('tr:nth-child(2) td:nth-child(2)').should(have.text(EMAIL))
-    browser.element('tr:nth-child(3) td:nth-child(2)').should(have.text('Other'))
+    browser.element('tr:nth-child(3) td:nth-child(2)').should(have.text('Male'))
     browser.element('tr:nth-child(4) td:nth-child(2)').should(have.text(MOBILE))
-    browser.element('tr:nth-child(5) td:nth-child(2)').should(have.text('01 March,1988'))
+    browser.element('tr:nth-child(5) td:nth-child(2)').should(have.text('01 January,1988'))
     browser.element('tr:nth-child(6) td:nth-child(2)').should(have.text('English'))
     browser.element('tr:nth-child(7) td:nth-child(2)').should(have.text('Sports'))
     browser.element('tr:nth-child(8) td:nth-child(2)').should(have.text(FILE))
